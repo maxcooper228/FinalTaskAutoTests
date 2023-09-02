@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.BasePage;
-import pages.login.LoginPage;
-
 import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,5 +53,33 @@ public class InventorySidebarPage extends BasePage {
     public void assertThatAllItemsWorks(){
         String url = driver.getCurrentUrl();
         Assert.assertEquals(url, "https://www.saucedemo.com/inventory.html");
+    }
+    public void clickSidebar(){
+        wait.until(d -> sidebarButton.isDisplayed());
+        sidebarButton.click();
+    }
+    public void clickCloseSidebar(){
+        wait.until(d -> closeSideBar.isDisplayed());
+        closeSideBar.click();
+    }
+
+    public void clickAllItems(){
+        wait.until(d -> allItems.isDisplayed());
+        allItems.click();
+    }
+
+    public void clickAbout(){
+        wait.until(d -> about.isDisplayed());
+        about.click();
+    }
+
+    public void clickLogout(){
+        wait.until(d -> logout.isDisplayed());
+        logout.click();
+    }
+
+    public void clickResetAppState(){
+        wait.until(d -> resetAppState.isDisplayed());
+        resetAppState.click();
     }
 }

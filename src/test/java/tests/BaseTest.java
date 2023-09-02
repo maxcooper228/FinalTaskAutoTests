@@ -5,14 +5,10 @@ import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import steps.inventory.InventorySteps;
 import steps.login.LoginSteps;
-import steps.login.LoginSuccessSteps;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,8 +23,6 @@ public abstract class BaseTest {
     @Getter
     static WebDriver driver = null;
     Properties properties;
-    LoginSteps steps;
-    InventorySteps inventorySteps;
 
     @SneakyThrows
     @BeforeClass
@@ -54,7 +48,7 @@ public abstract class BaseTest {
     }
     protected void loginMethod(String login, String password) {
         visit("");
-        LoginSuccessSteps steps1 = new LoginSuccessSteps();
+        LoginSteps steps1 = new LoginSteps();
         steps1.doLogin(login, password);
         steps1.verifyThatOk();
     }

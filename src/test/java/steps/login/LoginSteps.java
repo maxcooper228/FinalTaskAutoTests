@@ -1,36 +1,40 @@
 package steps.login;
 
+
 import pages.login.LoginPage;
 
 public class LoginSteps {
     LoginPage loginPage = new LoginPage();
 
-    public LoginSuccessSteps doLogin(String login, String password){
-        inputLoginData(login, password);
-        return new LoginSuccessSteps();
-    }
-    public LoginFailedSteps doLoginFailed(String login, String password){
-        inputLoginData(login, password);
-        return new LoginFailedSteps();
-    }
 
-    public LoginUsernameRequiredSteps doLoginUsername(String login, String password){
+    public LoginSteps doLogin(String login, String password){
         inputLoginData(login, password);
-        return new LoginUsernameRequiredSteps();
+        return new LoginSteps();
     }
-    public LoginPasswordRequiredSteps doLoginPassword(String login, String password){
+    public LoginSteps doLoginFailed(String login, String password){
         inputLoginData(login, password);
-        return new LoginPasswordRequiredSteps();
+        return new LoginSteps();
     }
-    public LoginLockedUserSteps doLoginLockedUser(String login, String password){
-        inputLoginData(login, password);
-        return new LoginLockedUserSteps();
-    }
-
-
     private void inputLoginData(String login, String password) {
         loginPage.fillLoginField(login);
         loginPage.fillPasswordField(password);
         loginPage.clickButton();
+    }
+    public void verifyThatOk(){
+
+        loginPage.assertThatCartIsPresented();
+    }
+    public void verifyThatLoginFailed(){
+        loginPage.assertThatLoginFailed();
+    }
+    public void verifyThatUserLocked(){
+        loginPage.assertThatUserLocked();
+    }
+    public void verifyThatPasswordIsRequired(){
+
+        loginPage.assertThatPasswordIsRequired();
+    }
+    public void verifyThatUserNameIsRequired(){
+        loginPage.assertThatUserNameIsRequired();
     }
 }

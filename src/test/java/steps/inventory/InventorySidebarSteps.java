@@ -25,4 +25,44 @@ public class InventorySidebarSteps {
 
         page.assertThatAllItemsWorks();
     }
+    public InventorySidebarSteps doClickSidebar(){
+        clickSidebar();
+        return new InventorySidebarSteps();
+    }
+    public InventorySidebarSteps doClickCloseSidebar(){
+        clickCloseSidebar();
+        return new InventorySidebarSteps();
+    }
+    public InventorySidebarSteps doClickLogout(){
+        clickLogout();
+        return new InventorySidebarSteps();
+    }
+    public InventorySidebarSteps doClickAbout(){
+        clickAbout();
+        return  new InventorySidebarSteps();
+    }
+    public InventorySidebarSteps doClickAllItems(){
+        clickAllItems();
+        return new InventorySidebarSteps();
+    }
+    private void clickSidebar(){
+        page.clickSidebar();
+    }
+    private void clickAllItems(){
+        page.clickAllItems();
+    }
+    private void clickAbout(){
+        page.clickAbout();
+    }
+    private void clickLogout(){
+        page.clickLogout();
+    }
+    private void clickReset(){
+        page.clickResetAppState();
+    }
+    private void clickCloseSidebar(){
+        page.clickCloseSidebar();
+    }
+
+
 }

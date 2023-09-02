@@ -1,19 +1,16 @@
 package tests;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import steps.login.LoginLockedUserSteps;
+import steps.login.LoginSteps;
 
-import java.time.Duration;
 
-public class LoginLockedUserTest extends BaseTest{
+public class LoginLockedUserTest extends BaseTest{                         // Даний клас перевіряє можливість логіну під кредами залоченого юзера
     @Test(dataProvider = "loginLockedUser")
 
     public void testLoginLockedUser(String login, String password){
         visit("");
-        LoginLockedUserSteps step = steps.doLoginLockedUser(login, password);
-        step.verifyThatOk();
-
+        LoginSteps step1 = new LoginSteps();
+        step1.doLoginFailed(login, password);
+        step1.verifyThatUserLocked();
     }
 
 }
